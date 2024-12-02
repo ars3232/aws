@@ -1,14 +1,19 @@
 # Base image
-FROM python:3.8
+FROM python:3.11
 
 # Set the working directory inside the container
 WORKDIR /app
+# Use Node.js as the base image
+FROM node:16
 
 # Copy the requirements file
 COPY requirements.txt .
 
 # Install the project dependencies
 RUN pip install -r requirements.txt
+
+# Install dependencies
+RUN npm install
 
 # Copy the application code into the container
 COPY . .
